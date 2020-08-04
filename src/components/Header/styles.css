@@ -1,0 +1,41 @@
+#page-header {
+    background-color: var(--color-primary);
+    color: var(--color-title-in-primary);
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
+#page-header .container > div {
+    width: 60%;
+}
+
+#title-max,
+#title-min {
+    margin-bottom: 2rem;
+}
+
+#page-header-icons {
+    height: 1rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-header-icons img {
+    height: 100%;
+}
+
+#title-max {
+    display: none;
+}
+
+@media(min-width: 1000px) {
+    #title-max {
+        display: block;
+    }
+    
+    #title-min {
+        display: none;
+    }
+}

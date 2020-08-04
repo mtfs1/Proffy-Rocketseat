@@ -1,0 +1,131 @@
+#landing-container {
+    background-color: var(--color-primary);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-panel {
+    width: 80%;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#landing-panel,
+#landing-panel a {
+    color: var(--color-title-in-primary);
+}
+
+#hero {
+    display: none;
+}
+
+#landing-image {
+    margin-bottom: 3rem;
+}
+
+#landing-image img {
+    width: 100%;
+}
+
+#landing-panel main {
+    width: 100%;
+}
+
+#welcome-text {
+    margin-bottom: 2rem;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+
+#buttons-container > a {
+    flex-basis: 40%;
+}
+
+#buttons-container .btn {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--color-primary-lighter);
+    border-radius: .5rem;
+    transition: background .3s;
+}
+
+#buttons-container .btn:hover {
+    background-color: var(--color-primary-light);
+}
+
+#buttons-container .btn.btn-success {
+    background-color: var(--color-secondary);
+}
+
+#buttons-container .btn.btn-success:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+#buttons-container .btn img {
+    margin-bottom: 3rem;
+}
+
+#landing-panel footer {
+    width: 100%;
+}
+
+#landing-panel footer img {
+    margin-left: .5rem;
+}
+
+@media(min-width: 1000px) {
+    #landing-panel {
+        min-width: 50rem;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas:
+        "hero header header"
+        "buttons buttons footer";
+    }
+    #hero {
+        display: block;
+        grid-area: hero;
+    }
+    #hero img {
+        width: 80%;
+    }
+    #landing-image {
+        grid-area: header;
+    }
+    #landing-panel main {
+        grid-area: buttons;
+    }
+    #welcome-text {
+        display: none;
+    }
+    #buttons-container {
+        justify-content: flex-start;
+    }
+    #buttons-container .btn {
+        margin-right: 1rem;
+    }
+    #buttons-container .btn {
+        flex-direction: row-reverse;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    #buttons-container .btn img {
+        display: none;
+    }
+    #landing-panel footer {
+        display: flex;
+        align-items: center;
+        font-size: .6rem;
+    }
+}
