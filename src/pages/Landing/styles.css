@@ -55,21 +55,14 @@
     align-items: baseline;
     flex-direction: column;
     padding: 1rem;
+}
+
+#buttons-container .btn-grey {
     background-color: var(--color-primary-lighter);
-    border-radius: .5rem;
-    transition: background .3s;
 }
 
-#buttons-container .btn:hover {
+#buttons-container .btn-grey:hover {
     background-color: var(--color-primary-light);
-}
-
-#buttons-container .btn.btn-success {
-    background-color: var(--color-secondary);
-}
-
-#buttons-container .btn.btn-success:hover {
-    background-color: var(--color-secondary-dark);
 }
 
 #buttons-container .btn img {

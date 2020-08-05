@@ -1,0 +1,44 @@
+#teacher-list-filter-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-text-in-primary);
+    padding-bottom: .5rem;
+    user-select: none;
+}
+
+#teacher-list-filter-button img {
+    height: 1rem;
+}
+
+#teacher-list-filter-collapse {
+    overflow: hidden;
+    height: 0;
+    transition: height .5s;
+}
+
+#teacher-list-filter-collapse.open {
+    height: 12rem;
+}
+
+#teacher-list-filter-menu-sm label{
+    color: var(--color-text-in-primary)
+}
+
+#time {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: .5rem;
+}
+
+#time input {
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 900px) {
+    #teacher-list-filter-button {
+        display: none;
+    }
+}

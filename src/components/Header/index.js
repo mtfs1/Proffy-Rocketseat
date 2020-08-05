@@ -9,17 +9,22 @@ import "./styles.css"
 
 export default function Header(props) {
     return (
-        <header id="page-header">
+        <header id="page-header" className={props.className}>
             <div id="page-header-icons">
                 <Link to="/" ><img src={back} /></Link>
                 <img src={logo} />
             </div>
             <div className="container">
-                <div>
+                <div id="titles">
                     <h1 id="title-max">{props.titleMax}</h1>
                     <h1 id="title-min">{props.titleMin}</h1>
                     {props.description && <p id="desc">{props.description}</p>}
                 </div>
+                {props.children && (
+                    <div id="header-children">
+                        {props.children}
+                    </div>
+                )}
             </div>
         </header>
     )

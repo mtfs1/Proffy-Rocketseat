@@ -27,14 +27,14 @@ export default function Landing() {
                         <strong>O que deseja fazer?</strong>
                     </div>
                     <div id="buttons-container">
-                        <Link  to="/study">
+                        <Link to="/study">
                             <div className="btn">
                                 <img src={studyIcon} />
                                 <span>Estudar</span>
                             </div>
                         </Link>
                         <Link to="/teach">
-                            <div className="btn btn-success">
+                            <div className="btn btn-grey">
                                 <img src={teachIcon} />
                                 <span>Dar aulas</span>
                             </div>

@@ -1,0 +1,16 @@
+#teacher-list-filter-menu-lg {
+    margin-top: -3.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1rem;
+    display: none;
+}
+
+#teacher-list-filter-menu-lg label {
+    color: var(--color-text-in-primary);
+}
+
+@media(min-width: 900px) {
+    #teacher-list-filter-menu-lg {
+        display: grid;
+    }
+}
