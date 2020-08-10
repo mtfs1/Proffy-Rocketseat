@@ -11,8 +11,8 @@ export default function Header(props) {
     return (
         <header id="page-header" className={props.className}>
             <div id="page-header-icons">
-                <Link to="/" ><img src={back} /></Link>
-                <img src={logo} />
+                <Link to="/" ><img src={back} alt="home" /></Link>
+                <img src={logo} alt="logo" />
             </div>
             <div className="container">
                 <div id="titles">

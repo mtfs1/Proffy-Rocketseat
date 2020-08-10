@@ -2,9 +2,9 @@ exports.up = function(knex) {
     return knex.schema.createTable("classes_schedules", t => {
         t.increments("id").primary()
         
-        t.string("week_day")
-        t.integer("hour_begin")
-        t.integer("hour_end")
+        t.integer("week_day")
+        t.integer("minute_begin")
+        t.integer("minute_end")
 
         t.integer("class_id")
             .notNull()

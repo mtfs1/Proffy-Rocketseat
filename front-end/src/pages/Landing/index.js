@@ -15,11 +15,11 @@ export default function Landing() {
         <div id="landing-container">
             <div id="landing-panel">
                 <div id="hero">
-                    <img src={logo} />
+                    <img src={logo} alt="logo" />
                     <p>Sua plataforma de <br /> estudos online!</p>
                 </div>
                 <header id="landing-image">
-                    <img src={landing} />
+                    <img src={landing} alt="" />
                 </header>
                 <main>
                     <div id="welcome-text">
@@ -29,13 +29,13 @@ export default function Landing() {
                     <div id="buttons-container">
                         <Link to="/study">
                             <div className="btn">
-                                <img src={studyIcon} />
+                                <img src={studyIcon} alt="study" />
                                 <span>Estudar</span>
                             </div>
                         </Link>
                         <Link to="/teach">
                             <div className="btn btn-grey">
-                                <img src={teachIcon} />
+                                <img src={teachIcon} alt="teach" />
                                 <span>Dar aulas</span>
                             </div>
                         </Link>
@@ -45,7 +45,7 @@ export default function Landing() {
                     <span id="footer-message">
                         Total de 285 conexões já realizadas
                     </span>
-                    <img src={heart} />
+                    <img src={heart} alt="heart" />
                 </footer>
             </div>
         </div>

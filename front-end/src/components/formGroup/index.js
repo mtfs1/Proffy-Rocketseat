@@ -1,27 +1,41 @@
 import React from "react"
 
 export default function FormGrup(props) {
-    if(props.type === "textarea") {
+    const {name, label, options, type, set, ...rest} = props
+    if(type === "textarea") {
         return (
             <div className="form-group">
-                <label>{props.label}</label>
-                <textarea type="number" name={props.name} {...props}></textarea>
+                <label>{label}</label>
+                <textarea
+                    name={name}
+                    onChange={e => set(e.target.value)}
+                    {...rest}
+                ></textarea>
             </div>
         )
-    } else if(props.type ==="select"){
+    } else if(type ==="select"){
         return (
             <div className="form-group">
-                <label>{props.label}</label>
-                <select name={props.name}>
-                    {props.options.map(option => <option>{option}</option>)}
+                <label>{label}</label>
+                <select name={name} onChange={e => set(e.target.value)} {...rest}>
+                    {options.map((option, i) => 
+                        <option
+                            key={i}
+                            value={option.value}
+                        >{option.name}</option>)}
                 </select>
             </div>
         )
     } else {
         return (
             <div className="form-group">
-                <label>{props.label}</label>
-                <input type="number" name={props.name} {...props}/>
+                <label>{label}</label>
+                <input
+                    type={type}
+                    name={name}
+                    onChange={e => set(e.target.value)}
+                    {...rest}
+                />
             </div>
         )
     }

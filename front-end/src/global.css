@@ -91,5 +91,4 @@ h1 {
     border: 2px solid var(--color-line-in-white);
     outline: none;
     background-color: var(--color-input-background);
-    cursor: pointer;
 }

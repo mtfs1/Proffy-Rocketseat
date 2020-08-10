@@ -3,7 +3,7 @@ exports.up = function(knex) {
         t.increments("id").primary()
         t.string("subject").notNull()
         t.decimal("price").notNull()
-        t.integer("user_id", 10)
+        t.integer("proffy_id", 10)
             .notNull()
             .unsigned()
             .references("id")

@@ -10,6 +10,7 @@ import "./styles.css"
 
 export default function TeacherListFilter(props) {
 
+    const {setTime, setDay, setSubject} = props
     const [open, setOpen] = useState(false)
 
     const handleOpen = () => setOpen(!open)
@@ -17,25 +18,63 @@ export default function TeacherListFilter(props) {
     return (
         <div id="teacher-list-filter-menu-sm">
             <div id="teacher-list-filter-button" onClick={handleOpen}>
-                <img src={filter} />
+                <img src={filter} alt="filter simbol"/>
                 <span>Filtrar por dia, hora, matéria</span>
-                <img src={arrow} />
+                <img src={arrow} alt="arrow simbol" />
             </div>
-            <form id="teacher-list-filter-collapse" className={open && "open"}>
-                <FormGroup label="Matéria" name="subject" type="select" options={["Matemática"]} />
+            <form id="teacher-list-filter-collapse" className={open ? "open" : ""}>
+                <FormGroup
+                    label="Matéria"
+                    name="subject"
+                    type="select"
+                    options={[
+                        {
+                            name: "Matemática",
+                            value: "math"
+                        }
+                    ]} 
+                    set={setSubject}
+                />
                 <div id="time">
                     <FormGroup label="Dia da semana" name="day" type="select"
                         options={[
-                            "Domingo",
-                            "Segunda",
-                            "Terça",
-                            "Quarta",
-                            "Quinta",
-                            "Sexta",
-                            "Sábado"
+                            {
+                                name: "Domingo",
+                                value: 1
+                            },
+                            {
+                                name: "Segunda",
+                                value: 2
+                            },
+                            {
+                                name: "Terça",
+                                value: 3
+                            },
+                            {
+                                name: "Quarta",
+                                value: 4
+                            },
+                            {
+                                name: "Quinta",
+                                value: 5
+                            },
+                            {
+                                name: "Sexta",
+                                value: 6
+                            },
+                            {
+                                name: "Sábado",
+                                value: 7
+                            }
                         ]}
+                        set={setDay}
                     />
-                    <FormGroup label="Horário" name="time" type="time" />
+                    <FormGroup
+                        label="Horário"
+                        name="time"
+                        type="time"
+                        set={setTime}
+                    />
                 </div>
             </form>
         </div>
