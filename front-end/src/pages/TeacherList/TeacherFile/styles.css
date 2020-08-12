@@ -1,6 +1,13 @@
+.teacher-file:first-child {
+    margin-top: -3rem;
+}
+
+.teacher-file:last-child {
+    margin-bottom: 10rem;
+}
+
 .teacher-file {
     color: var(--color-text-base);
-    margin-top: -3rem;
     margin-bottom: 3rem;
 }
 
@@ -92,8 +99,9 @@
 }
 
 @media (min-width: 900px) {
-    .teacher-file {
-        margin-top: auto;
+
+    .teacher-file:first-child {
+        margin-top: 0
     }
 
     .teacher-file footer {

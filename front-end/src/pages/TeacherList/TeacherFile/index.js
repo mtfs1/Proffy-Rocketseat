@@ -1,15 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 
 import fav from "./../../../images/icons/success-check-icon.svg"
 import whatsapp from "./../../../images/icons/whatsapp.svg"
 
 import "./styles.css"
 
-export default function TeacherFile(props) {
-    const {link, name, subject, bio, price} = props
+export default function TeacherFile(
+        {isFavourite, unsetFavouriteProffy, setFavouriteProffy, id, link, name, subject, bio, price}
+    ) {
+
+    const handleFav = () => {
+        
+        if (isFavourite(id)) {
+            unsetFavouriteProffy(id)
+        } else {
+            setFavouriteProffy(id)
+        }
+    }
+
     const subjects = {
         math: "Matemática"
     }
+
     return (
         <div className="panel teacher-file">
             <header>
@@ -30,7 +42,7 @@ export default function TeacherFile(props) {
                     <strong>R$ {parseFloat(price).toFixed(2)}</strong>
                 </div>
                 <div className="fav">
-                    <button className="btn fav-btn">
+                    <button className="btn fav-btn" onClick={() => handleFav()}>
                         <img src={fav} alt="fav button" />
                     </button>
                     <button className="btn whatsapp-btn">

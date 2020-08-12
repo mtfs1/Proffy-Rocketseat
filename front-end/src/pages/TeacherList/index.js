@@ -5,6 +5,7 @@ import baseUrl from "./../../config/base-url"
 import Header from "./../../components/Header"
 import FormGroup from "./../../components/formGroup"
 
+import FavouritesFooter from "./FavouritesFooter"
 import TeacherFilterList from "./TeacherListFilter"
 import TeacherFile from "./TeacherFile"
 
@@ -13,11 +14,29 @@ import "./styles.css"
 export default function TeacherList() {
 
     const [proffies, setProffies] = useState([])
+    const [downloadedProffies, setDownloadedProffies] = useState([])
     const [subject, setSubject] = useState("math")
     const [day, setDay] = useState(1)
     const [time, setTime] = useState("")
+    const [favourite, setFavourite] = useState(false)
+    const [favouriteProffies, setFavouriteProffies] = useState([])
 
-    console.log(proffies)
+    const isFavourite = id => {
+        const match = favouriteProffies.filter(prf => prf.id === id)
+        return match.length === 1
+    }
+
+    const setFavouriteProffy = id => {    
+        const proffy = downloadedProffies.filter(prf => prf.id === id)
+        setFavouriteProffies([
+            ...favouriteProffies,
+            {...proffy[0]}
+        ])
+    }
+
+    const unsetFavouriteProffy = id => {
+        setFavouriteProffies(favouriteProffies.filter(prf => prf.id !== id))
+    }
 
     useEffect(() => {
         axios.get(baseUrl + "/classes", {
@@ -27,18 +46,17 @@ export default function TeacherList() {
                 time
             }
         })
-        .then(res => setProffies(res.data))
+        .then(res => setDownloadedProffies(res.data))
         .catch(console.log)
     }, [subject, day, time])
 
-    // const proffies = [{
-    //     id: 1,
-    //     name: "Matheus Ferreira Santos",
-    //     img: "https://scontent.fsjk2-1.fna.fbcdn.net/v/t1.0-9/83582428_1510185492464157_1520822321508515840_n.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_eui2=AeGYuF3vYurpyrT6BiF3NncUmcHl9jeYTNeZweX2N5hM15uoWF8fR-b_rwnbT5UR14pRH43NWsjqUqAmhYlsz2tr&_nc_ohc=6sfb2KQdb04AX9d5aYN&_nc_ht=scontent.fsjk2-1.fna&oh=8876fc84ae17b0b8c79f93978487de82&oe=5F5178A7",
-    //     subject: "Matemática",
-    //     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan ante massa, vitae malesuada purus placerat a. Vivamus eu consequat augue. Vestibulum elementum faucibus rutrum. Vestibulum ac ornare leo, mattis vestibulum lorem.",
-    //     price: 10.0
-    // }]
+    useEffect(() => {
+        if (favourite) {
+            setProffies(favouriteProffies)
+        } else {
+            setProffies(downloadedProffies)
+        }
+    }, [favourite, downloadedProffies])
 
     return (
         <>
@@ -111,10 +129,18 @@ export default function TeacherList() {
             <div className="container">
                 {proffies.length > 0 ?
                     proffies.map(proffy => 
-                    <TeacherFile key={proffy.id} {...proffy} />) :
+                    <TeacherFile
+                        isFavourite={isFavourite}
+                        setFavouriteProffy={setFavouriteProffy}
+                        unsetFavouriteProffy={unsetFavouriteProffy}
+                        key={proffy.id}
+                        id={proffy.id}
+                        {...proffy} 
+                    />) :
                     console.log(proffies)
                 }
             </div>
+            <FavouritesFooter set={setFavourite} favourite={favourite} />
         </>
     )
 }

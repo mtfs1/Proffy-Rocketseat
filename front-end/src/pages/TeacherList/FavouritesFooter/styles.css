@@ -1,0 +1,40 @@
+#favourites-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#favourites-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#favourites-footer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-title-in-primary);
+    background-color: var(--color-primary);
+    border: none;
+    cursor: pointer;
+    padding: 2rem;
+    transition: .5s;
+}
+
+#favourites-footer button:hover,
+#favourites-footer button.active {
+    background-color: var(--color-primary-dark);
+}
+
+#favourites-footer button img {
+    height: 2.5rem;
+    margin-right: 1rem;
+}
+
+@media (min-width: 900px) {
+    
+    #favourites-footer {
+        display: none;
+    }
+}
