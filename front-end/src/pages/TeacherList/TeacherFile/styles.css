@@ -74,13 +74,17 @@
 }
 
 .fav-btn {
-    background-color: var(--color-primary-darker) !important;
+    background-color: var(--color-primary) !important;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 1rem;
     height: 4rem;
     width: 4rem;
+}
+
+.fav-btn.is-fav {
+    background-color: var(--color-primary-darker) !important;
 }
 
 .fav-btn img {

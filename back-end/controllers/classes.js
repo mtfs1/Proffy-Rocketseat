@@ -75,8 +75,6 @@ router.post("/", async (req, res) => {
 })
 
 router.get("/", async (req, res) => {
-  console.log("ok")
-
   const {subject, day, time} = req.query
   const minutes = hoursInMinutes(time)
   
