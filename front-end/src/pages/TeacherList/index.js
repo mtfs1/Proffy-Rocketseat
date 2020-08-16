@@ -9,15 +9,21 @@ import FavouritesFooter from "./FavouritesFooter"
 import TeacherFilterList from "./TeacherListFilter"
 import TeacherFile from "./TeacherFile"
 
+import {useSelector, useDispatch} from "react-redux"
+import {actionSetProffies} from "./../../redux/ducks/proffies"
+
 import "./styles.css"
 
 export default function TeacherList() {
 
-  const [proffies, setProffies] = useState([])
+  const proffies = useSelector(store => store.proffies)
+  const favourites = useSelector(store => store.favourites.ids)
+  const favourite = useSelector(store => store.favourites.favourite)
+  const dispatch = useDispatch()
+
   const [subject, setSubject] = useState("math")
   const [day, setDay] = useState(1)
   const [time, setTime] = useState("")
-  const [favourite, setFavourite] = useState(false)
 
   const renderProffies = proffies => {
     return proffies.map(prf => 
@@ -28,18 +34,14 @@ export default function TeacherList() {
   }
 
   const renderFavouriteProffies = proffies => {
-    const favouriteProffiesJson = localStorage.getItem("@proffy/favourites")
-    const favouriteProffiesArray = JSON.parse(favouriteProffiesJson)
     return proffies
-      .filter(prf => favouriteProffiesArray.includes(prf.id))
+      .filter(prf => favourites.includes(prf.id))
       .map(prf =>
         <TeacherFile 
           key={prf.id}
           {...prf}
         />)
   }
-
-  console.log(renderFavouriteProffies(proffies))
 
   useEffect(() => {
     axios.get(baseUrl + "/classes", {
@@ -49,9 +51,9 @@ export default function TeacherList() {
         time
       }
     })
-    .then(res => setProffies(res.data))
+    .then(res => dispatch(actionSetProffies(res.data)))
     .catch(console.log)
-  }, [subject, day, time])
+  }, [subject, day, time, dispatch])
 
   return (
     <>
@@ -130,7 +132,7 @@ export default function TeacherList() {
           : ""
         }
       </div>
-      <FavouritesFooter set={setFavourite} favourite={favourite} />
+      <FavouritesFooter />
     </>
   )
 }

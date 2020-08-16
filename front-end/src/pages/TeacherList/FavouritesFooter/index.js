@@ -1,20 +1,31 @@
 import React from "react"
-import {Link, Redirect} from "react-router-dom"
 
 import teachIcon from "./../../../images/icons/give-classes.svg"
 import fav from "./../../../images/icons/success-check-icon.svg"
 
+import {useSelector, useDispatch} from "react-redux"
+import {actionFavouriteTrue, actionFavouriteFalse} from "./../../../redux/ducks/favourites"
+
 import "./styles.css"
 
-export default function FavouritesFooter({set, favourite}) {
+export default function FavouritesFooter() {
+    const favourite = useSelector(store => store.favourites.favourite)
+    const dispatch = useDispatch()
+
     return (
         <div id="favourites-footer">
-            <button onClick={() => set(false)} className={ favourite ? "":"active"}>
-                <img src={teachIcon} />
+            <button 
+                onClick={() => dispatch(actionFavouriteFalse())}
+                className={ favourite ? "":"active"}
+            >
+                <img src={teachIcon} alt="teachers"/>
                 <span>Proffies</span>
             </button>
-            <button onClick={() => set(true)} className={ favourite ? "active":""}>
-                <img src={fav} />
+            <button
+                onClick={() => dispatch(actionFavouriteTrue())}
+                className={ favourite ? "active":""}
+            >
+                <img src={fav} alt="favourite" />
                 <span>Favoritos</span>
             </button>
         </div>

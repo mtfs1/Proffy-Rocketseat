@@ -1,45 +1,22 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
 import fav from "./../../../images/icons/success-check-icon.svg"
 import whatsapp from "./../../../images/icons/whatsapp.svg"
 
+import {useSelector, useDispatch} from "react-redux"
+import {actionAddFavourite, actionRemoveFavourite} from "./../../../redux/ducks/favourites"
+
 import "./styles.css"
 
-export default function TeacherFile(
-    {favourite, id, link, name, subject, bio, price}
-  ) {
+export default function TeacherFile({id, link, name, subject, bio, price}) {
 
-  const [isFav, setIsFav] = useState(false)
-
-  useEffect(() => {
-    const initialJson = localStorage.getItem("@proffy/favourites")
-    const fav = JSON.parse(initialJson)
-    if(fav) {
-      if(fav.includes(id)){
-        setIsFav(true)
-      } else {
-        setIsFav(false)
-      }
-    } else {
-      const json = JSON.stringify([])
-      localStorage.setItem("@proffy/favourites", json)
-    }
-  }, [])
+  const dispatch = useDispatch()
+  const favourite = useSelector(store => store.favourites.ids.includes(id))
 
   const handleFav = () => {
-    const initialJson = localStorage.getItem("@proffy/favourites")
-    const fav = JSON.parse(initialJson)
-    if(isFav){
-      const finalArray = fav.filter(fv => fv !== id)
-      const json = JSON.stringify(finalArray)
-      localStorage.setItem("@proffy/favourites", json)
-      setIsFav(false)
-    } else {
-      const finalArray = [...fav, id]
-      const json = JSON.stringify(finalArray)
-      localStorage.setItem("@proffy/favourites", json)
-      setIsFav(true)
-    }
+    favourite
+    ? dispatch(actionRemoveFavourite(id))
+    : dispatch(actionAddFavourite(id))
   }
 
   const subjects = {
@@ -67,7 +44,7 @@ export default function TeacherFile(
         </div>
         <div className="fav">
           <button
-            className={isFav ? "btn fav-btn is-fav" : "btn fav-btn"}
+            className={favourite ? "btn fav-btn is-fav" : "btn fav-btn"}
             onClick={handleFav}
           >
             <img src={fav} alt="fav button" />
