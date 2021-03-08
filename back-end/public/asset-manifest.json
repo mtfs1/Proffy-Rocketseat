@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.27db54bb.chunk.css",
+    "main.js": "/static/js/main.bddf3c2a.chunk.js",
+    "main.js.map": "/static/js/main.bddf3c2a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1b009738.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1b009738.js.map",
+    "static/js/2.e464c5f7.chunk.js": "/static/js/2.e464c5f7.chunk.js",
+    "static/js/2.e464c5f7.chunk.js.map": "/static/js/2.e464c5f7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c271f95fd587ce134c914bab84f62806.js": "/precache-manifest.c271f95fd587ce134c914bab84f62806.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.27db54bb.chunk.css.map": "/static/css/main.27db54bb.chunk.css.map",
+    "static/js/2.e464c5f7.chunk.js.LICENSE.txt": "/static/js/2.e464c5f7.chunk.js.LICENSE.txt",
+    "static/media/back.svg": "/static/media/back.dc8c47fa.svg",
+    "static/media/filter.png": "/static/media/filter.8365e307.png",
+    "static/media/give-classes.svg": "/static/media/give-classes.156102ee.svg",
+    "static/media/landing.svg": "/static/media/landing.211f2bb0.svg",
+    "static/media/logo.svg": "/static/media/logo.86fef799.svg",
+    "static/media/purple-heart.svg": "/static/media/purple-heart.bfdb3ebe.svg",
+    "static/media/study.svg": "/static/media/study.e7a7e1b4.svg",
+    "static/media/success-check-icon.svg": "/static/media/success-check-icon.138ee05c.svg",
+    "static/media/warning.svg": "/static/media/warning.6dfaa2f9.svg",
+    "static/media/whatsapp.svg": "/static/media/whatsapp.45c6e6ec.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1b009738.js",
+    "static/js/2.e464c5f7.chunk.js",
+    "static/css/main.27db54bb.chunk.css",
+    "static/js/main.bddf3c2a.chunk.js"
+  ]
+}
